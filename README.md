@@ -238,8 +238,7 @@ document.addEventListener("keydown", function (e) {
 
 Now try moving the dodger past the left edge. No can do!
 
-Copy the final cod
-e into `index.js` and run the tests. You should now have the
+Copy the final code into `index.js` and run the tests. You should now have the
 first one passing.
 
 ## Exercise
