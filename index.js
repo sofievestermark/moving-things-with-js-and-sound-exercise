@@ -100,7 +100,82 @@
 
 //chatten hjalp med at rette ovenstående til følgende:
 
-const dodger = document.getElementById("dodger");
+// const dodger = document.getElementById("dodger");
+
+// function moveDodgerLeft() {
+//   const leftNumbers = dodger.style.left.replace("px", "") || "0"; 
+//   const left = parseInt(leftNumbers, 10);
+
+//   if (left > 0) {
+//     dodger.style.left = `${left - 10}px`;
+//     playSoundOnMovement(); // Play sound on movement
+//   }
+// }
+
+// function moveDodgerRight() {
+//   const leftNumbers = dodger.style.left.replace("px", "") || "0";
+//   const left = parseInt(leftNumbers, 10);
+
+//   if (left < 360) {
+//     dodger.style.left = `${left + 10}px`;
+//     playSoundOnMovement(); // Play sound on movement
+//   }
+// }
+
+// function moveDodgerUp() {
+//   const topNumbers = dodger.style.top.replace("px", "") || "0";
+//   const top = parseInt(topNumbers, 10);
+
+//   if (top > 0) {
+//     dodger.style.top = `${top - 10}px`;
+//     playSoundOnMovement(); // Play sound on movement
+//   }
+// }
+
+// function moveDodgerDown() {
+//   const topNumbers = dodger.style.top.replace("px", "") || "0";
+//   const top = parseInt(topNumbers, 10);
+
+//   if (top < 360) {
+//     dodger.style.top = `${top + 10}px`;
+//     playSoundOnMovement(); // Play sound on movement
+//   }
+// }
+
+// document.addEventListener("keydown", function (e) {
+//   if (e.key === "ArrowLeft") {
+//     moveDodgerLeft();
+//   }
+//   if (e.key === "ArrowRight") {
+//     moveDodgerRight();
+//   }
+//   if (e.key === "ArrowUp") {
+//     moveDodgerUp();
+//   }
+//   if (e.key === "ArrowDown") {
+//     moveDodgerDown();
+//   }
+// });
+
+
+
+
+
+//Game over sound
+const gameoverSound = document.getElementById("gameoverSound");
+
+function playGameOverSound() {
+    gameoverSound.currentTime = 0; // Restart sound from the beginning
+    gameoverSound.play(); // Play the sound
+  }
+
+  const dodger = document.getElementById("dodger");
+const movementSound = document.getElementById("movement_sound");
+
+function playSoundOnMovement() {
+  movementSound.currentTime = 0;
+  movementSound.play();
+}
 
 function moveDodgerLeft() {
   const leftNumbers = dodger.style.left.replace("px", "") || "0"; 
@@ -108,7 +183,9 @@ function moveDodgerLeft() {
 
   if (left > 0) {
     dodger.style.left = `${left - 10}px`;
-    playSoundOnMovement(); // Play sound on movement
+    playSoundOnMovement();
+  } else {
+    playGameOverSound(); // Play game over sound when hitting the left edge
   }
 }
 
@@ -116,9 +193,11 @@ function moveDodgerRight() {
   const leftNumbers = dodger.style.left.replace("px", "") || "0";
   const left = parseInt(leftNumbers, 10);
 
-  if (left < 360) {
+  if (left < 360) { // Assuming container width is 400px, dodger width is 40px
     dodger.style.left = `${left + 10}px`;
-    playSoundOnMovement(); // Play sound on movement
+    playSoundOnMovement();
+  } else {
+    playGameOverSound(); // Play game over sound when hitting the right edge
   }
 }
 
@@ -128,7 +207,9 @@ function moveDodgerUp() {
 
   if (top > 0) {
     dodger.style.top = `${top - 10}px`;
-    playSoundOnMovement(); // Play sound on movement
+    playSoundOnMovement();
+  } else {
+    playGameOverSound(); // Play game over sound when hitting the top edge
   }
 }
 
@@ -136,9 +217,11 @@ function moveDodgerDown() {
   const topNumbers = dodger.style.top.replace("px", "") || "0";
   const top = parseInt(topNumbers, 10);
 
-  if (top < 360) {
+  if (top < 360) { // Assuming container height is 400px, dodger height is 40px
     dodger.style.top = `${top + 10}px`;
-    playSoundOnMovement(); // Play sound on movement
+    playSoundOnMovement();
+  } else {
+    playGameOverSound(); // Play game over sound when hitting the bottom edge
   }
 }
 
@@ -156,3 +239,5 @@ document.addEventListener("keydown", function (e) {
     moveDodgerDown();
   }
 });
+
+  
