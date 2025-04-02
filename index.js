@@ -25,6 +25,9 @@
 //     }
 //   });
   
+
+
+
 const dodger = document.getElementById("dodger");
 
 function moveDodgerLeft() {
@@ -55,6 +58,35 @@ function moveDodgerLeft() {
   document.addEventListener("keydown", function (e) {
     if (e.key === "ArrowRight") { 
       moveDodgerRight();
+    }
+  });
+  
+
+// jeg kan ikke få dette til at virke
+  function moveDodgerUp() {
+    const topNumbers = dodger.style.top.replace("px", "");
+    const top = parseInt(topNumbers, 10);
+  
+    if (top > 0) { // Sørger for, at dodger ikke går ud af skærmen
+      dodger.style.top = `${top - 10}px`; // Flytter dodger op
+    }
+  }
+  
+  function moveDodgerDown() {
+    const topNumbers = dodger.style.top.replace("px", "");
+    const top = parseInt(topNumbers, 10);
+  
+    if (top < 360) { // Antag at containerens højde er 400px, og dodger er 40px høj
+      dodger.style.top = `${top + 10}px`; // Flytter dodger ned
+    }
+  }
+  
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowUp") {
+      moveDodgerUp();
+    }
+    if (e.key === "ArrowDown") {
+      moveDodgerDown();
     }
   });
   
